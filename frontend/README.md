@@ -6,7 +6,13 @@ Download pnpm if you haven't already:
 
 https://pnpm.io/installation
 
-First, run the development server:
+First install the dependencies:
+
+```bash
+pnpm i
+```
+
+Then run the development server:
 
 ```bash
 pnpm dev
