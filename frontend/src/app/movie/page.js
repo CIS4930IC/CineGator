@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google"
+import Review from "../components/Review/review.js"
 const inter = Inter({ subsets: ["latin"] })
 
 export default function Movie() {
@@ -93,9 +94,9 @@ export default function Movie() {
         </div>
       </nav>
       <div class="bg-white mx-8 my-12 rounded-md shadow-lg p-6 md:p-8 flex flex-col md:flex-row">
-        <div class="flex-1 md:pr-6 my-4 mx-4">
-          <h1 class="text-5xl font-bold mb-8 text-gray-800">Movie Title</h1>
-          <div class="flex items-center my-4">
+        <div class="flex-1 md:pr-6 my-8 mx-4 pl-4 pr-10">
+          <h1 class="text-5xl font-bold mb-2 text-gray-800">Movie Title</h1>
+          <div class="flex items-center mt-2 mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -111,12 +112,13 @@ export default function Movie() {
             <p class="text-lg mr-1 text-gray-600">4.5</p>
             <p class="text-sm text-gray-500">(42 ratings)</p>
           </div>
-          <p class="text-lg text-gray-800">Movie description goes here.</p>
+          <p class="text-lg text-gray-800 max-w-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, molestiae eos! Vitae quasi optio sapiente eligendi suscipit obcaecati tenetur architecto fugiat iusto voluptatem sit, ex, corrupti at, nemo deserunt labore?</p>
         </div>
         <div class="flex-1">
           <img src="https://via.placeholder.com/1280x720" alt="Movie poster" class="w-full h-auto object-cover rounded-md shadow-lg" width="1280" height="720" />
         </div>
       </div>
+      <Review></Review>
     </div>
   )
 }
