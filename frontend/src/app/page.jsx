@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <header>
       <nav
-        className="fixed z-10 top-0 inset-x-0 flex w-full items-center justify-between bg-white py-2 text-neutral-600 shadow-lg focus:text-neutral-800 dark:bg-neutral-700 dark:text-neutral-200 md:flex-wrap md:justify-start"
+        className="fixed z-10 top-0 inset-x-0 flex w-full items-center justify-between py-2 text-neutral-600 shadow-lg focus:text-neutral-800 dark:text-neutral-200 md:flex-wrap md:justify-start"
         data-te-navbar-ref
       >
 

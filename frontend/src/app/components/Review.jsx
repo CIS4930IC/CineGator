@@ -2,7 +2,7 @@ export default function Review() {
     return (
         <article>
         <div class="flex items-center mb-4 space-x-4">
-          <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt=""/>
+          <img class="w-10 h-10 rounded-full" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt=""/>
             <div class="space-y-1 font-medium dark:text-white">
               <p>Jese Leos <time datetime="2014-08-16 19:00" class="block text-sm text-gray-500 dark:text-gray-400">Joined on August 2014</time></p>
             </div>
