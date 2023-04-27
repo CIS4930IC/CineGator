@@ -13,41 +13,26 @@ export default function Home() {
       >
 
         <div className="px-6">
-          <button
-            className="border-0 bg-transparent py-3 px-2 text-xl leading-none md:hidden"
-            type="button"
-            data-te-collapse-init
-            data-te-target="#navbarSupportedContentO"
-            aria-controls="navbarSupportedContentO"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="[&>svg]:w-5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-            </span>
-          </button>
           <div
             className="!visible hidden grow basis-[100%] items-center md:!flex md:basis-auto"
             id="navbarSupportedContentO"
             data-te-collapse-item
           >
             <ul
-              className="mr-auto flex flex-col md:flex-row"
+              className="mr-auto flex flex-col md:flex-row items-center"
               data-te-navbar-nav-ref
             >
+              <li data-te-nav-item-ref>
+                <a
+                  className="block transition duration-150 ease-in-out md:p-2 [&.active]:border-primary [&.active]:text-primary mr-5 text-2xl"
+                  href="#!"
+                  data-te-nav-link-ref
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                >
+                  CineGator
+                </a>
+              </li>
               <li data-te-nav-item-ref>
                 <a
                   className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white md:p-2 [&.active]:border-primary [&.active]:text-primary"
@@ -72,13 +57,24 @@ export default function Home() {
               </li>
               <li data-te-nav-item-ref>
                 <a
-                  className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white md:p-2 [&.active]:border-primary [&.active]:text-primary "
+                  className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white md:p-2 [&.active]:border-primary [&.active]:text-primary"
                   href="#!"
                   data-te-nav-link-ref
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
                   About
+                </a>
+              </li>
+              <li data-te-nav-item-ref>
+                <a
+                  className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white md:p-2 [&.active]:border-primary [&.active]:text-primary ml:5"
+                  href="#!"
+                  data-te-nav-link-ref
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                >
+                  Sign in
                 </a>
               </li>
             </ul>
@@ -98,12 +94,12 @@ export default function Home() {
               <h2 className="mb-4 text-4xl font-semibold">
                 A New Way to Find Movies
               </h2>
-              <h4 className="mb-6 text-xl font-semibold">
+              <h4 className="mb-8 text-xl font-semibold">
                 Discover ratings for thousands of movies, or create your own. Become part of the community today.
               </h4>
               <button
                 type="button"
-                className="rounded border-2 border-neutral-50 px-7 pt-[8px] pb-[8px] text-sm font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                className="rounded border-2 border-neutral-50 px-7 pt-[8px] pb-[8px] text-sm font-medium uppercase leading-normal text-neutral-50 dark:hover:text-neutral-800 transition duration-350 hover:border-neutral-100 hover:bg-neutral-100 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
