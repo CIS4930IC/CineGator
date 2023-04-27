@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google"
-import Review from "../components/Review/review.js"
+import Review from "../components/Review.jsx"
 const inter = Inter({ subsets: ["latin"] })
 
 export default function Movie() {
