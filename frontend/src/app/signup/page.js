@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
-export default function Login() {
+export default function Signup() {
   return (
-    <div class="flex min-h-full flex-col h-screen justify-center px-6 pb-24 lg:px-8">
+    <div class="flex min-h-full flex-col h-screen justify-center px-6 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">Sign in to your account</h2>
+        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">Create an account</h2>
       </div>
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -13,6 +13,12 @@ export default function Login() {
             <label for="email" class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Email address</label>
             <div class="mt-2">
               <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3" />
+            </div>
+          </div>
+          <div>
+            <label for="username" class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Username</label>
+            <div class="mt-2">
+              <input id="username" name="username" autocomplete="username" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3" />
             </div>
           </div>
           <div>
@@ -30,8 +36,8 @@ export default function Login() {
         </form>
 
         <p class="mt-10 text-center text-sm text-gray-500 dark:text-white">
-          Not a user? 
-          <Link href='/signup' class="font-semibold leading-6 text-red-600 hover:text-red-800 dark:hover:text-red-800"> Sign up for an account.</Link>
+          Already have an account?
+          <Link href='/login' class="font-semibold leading-6 text-red-600 hover:text-red-800 dark:hover:text-red-800"> Sign in.</Link>
         </p>
       </div>
     </div>
