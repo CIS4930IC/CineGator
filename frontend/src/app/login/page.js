@@ -1,6 +1,6 @@
 export default function Login() {
   return (
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="flex min-h-full flex-col h-screen justify-center px-6 pb-24 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">Sign in to your account</h2>
       </div>
@@ -10,7 +10,7 @@ export default function Login() {
           <div>
             <label for="email" class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Email address</label>
             <div class="mt-2">
-              <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+              <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3" />
             </div>
           </div>
 
@@ -19,7 +19,7 @@ export default function Login() {
               <label for="password" class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Password</label>
             </div>
             <div class="mt-2">
-              <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+              <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3" />
             </div>
           </div>
 
@@ -30,7 +30,7 @@ export default function Login() {
 
         <p class="mt-10 text-center text-sm text-gray-500 dark:text-white">
           Not a user? 
-          <a href="#" class="font-semibold leading-6 text-red-700 hover:text-red-800 dark:hover:text-red-800"> Sign up for an account.</a>
+          <a href="#" class="font-semibold leading-6 text-red-600 hover:text-red-800 dark:hover:text-red-800"> Sign up for an account.</a>
         </p>
       </div>
     </div>
