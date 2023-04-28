@@ -26,7 +26,7 @@ export default function Home() {
               data-te-ripple-init
               data-te-ripple-color="light"
             >
-              Get Started
+              <Link href='/signup'>Get Started</Link>
             </button>
           </div>
         </div>
