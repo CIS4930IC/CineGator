@@ -13,8 +13,8 @@ export default function Home() {
             <Image src="/images/logo.png" alt="Flowbite Logo" height={1} width={190} />
           </a>
           <div class="flex md:order-2">
-            <button type="button" class="text-red-700 md:dark:text-red-500 hover:text-red-900 dark:hover:text-red-700 bg-transparent focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 ">Log In</button>
-            <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-red-600 dark:hover:bg-red-700">Sign Up</button>
+            <button type="button" class="text-red-700 md:dark:text-red-500 hover:text-red-900 dark:hover:text-red-800 bg-transparent focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 ">Log In</button>
+            <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-red-700 dark:hover:bg-red-800">Sign Up</button>
           </div>
           <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
             <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-black md:dark:bg-black dark:border-gray-700">
