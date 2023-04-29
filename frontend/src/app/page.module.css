@@ -151,6 +151,13 @@
   background-clip: content-box;
 }
 
+/* Flex Pages */
+.navflex {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
