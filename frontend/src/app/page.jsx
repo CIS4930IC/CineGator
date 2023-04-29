@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google"
-import Image from "next/image"      
+import Image from "next/image"
 import Link from "next/link"
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,14 +20,15 @@ export default function Home() {
             <h4 className="mb-8 text-xl font-semibold">
               Discover ratings for thousands of movies, or create your own. Become part of the community today.
             </h4>
-            <button
-              type="button"
-              className="rounded border-2 border-neutral-50 px-7 pt-[8px] pb-[8px] text-sm font-medium uppercase leading-normal text-neutral-50 dark:hover:text-neutral-800 transition duration-350 hover:border-neutral-100 hover:bg-neutral-100 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100"
-              data-te-ripple-init
-              data-te-ripple-color="light"
-            >
-              <Link href='/signup'>Get Started</Link>
-            </button>
+            <Link href="/signup">
+              <div
+                className="rounded border-2 border-neutral-50 px-7 pt-[8px] pb-[8px] text-sm font-medium uppercase leading-normal text-neutral-50 dark:hover:text-neutral-800 transition duration-350 hover:border-neutral-100 hover:bg-neutral-100 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 inline-block"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+              >
+                Get Started
+              </div>
+            </Link>
           </div>
         </div>
       </div>
