@@ -1,9 +1,11 @@
+"use client"
 import { Inter } from "next/font/google"
-import Review from "../components/Review.jsx"
+import Review from "../../components/Review"
 const inter = Inter({ subsets: ["latin"] })
-
-export default function Movie() {
-  return (
+import useMovie from "../../util/useMovie"
+export default function Movie({ params }) {
+  const { movie } = useMovie(params.id)
+  return movie ? (
     <div>
       <nav
         class="relative flex w-full items-center justify-between bg-white py-2 text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-200 md:flex-wrap md:justify-start"
@@ -95,7 +97,7 @@ export default function Movie() {
       </nav>
       <div class="bg-white mx-8 my-12 rounded-md shadow-lg p-6 md:p-8 flex flex-col md:flex-row">
         <div class="flex-1 md:pr-6 my-8 mx-4 pl-4 pr-10">
-          <h1 class="text-5xl font-bold mb-2 text-gray-800">Movie Title</h1>
+          <h1 class="text-5xl font-bold mb-2 text-gray-800">{movie.title}</h1>
           <div class="flex items-center mt-2 mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -104,9 +106,9 @@ export default function Movie() {
               class="w-8 h-8 text-yellow-500 mr-1"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M10 15.936l4.142 2.296-.99-4.856 3.326-2.876-4.598-.397L10 6.104 8.12 10.107l-4.598.397 3.326 2.876-.99 4.856L10 15.936z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
             <p class="text-lg mr-1 text-gray-600">4.5</p>
@@ -120,5 +122,5 @@ export default function Movie() {
       </div>
       <Review></Review>
     </div>
-  )
+  ) : <div></div>
 }
