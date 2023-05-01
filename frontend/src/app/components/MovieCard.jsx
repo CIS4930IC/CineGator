@@ -1,12 +1,18 @@
 import useMovie from "../util/useMovie"
+import { useRouter } from "next/navigation"
 
 export default function MovieCard({ id }) {
     const { movie, isLoading } = useMovie(id);
+    const router = useRouter();
 
     function formatDate(dateString) {
         const options = { month: 'short', day: 'numeric', year: 'numeric' };
         if (!dateString) return "Undated";
         return new Intl.DateTimeFormat('en-US', options).format(new Date(dateString));
+    }
+
+    const handleClick = () => {
+        router.push(`/movie/${id}`);
     }
 
     if (isLoading || !movie) {
@@ -20,7 +26,7 @@ export default function MovieCard({ id }) {
     }
 
     return (
-        <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 max-w-[200px]">
+        <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 max-w-[200px] transform transition duration-500 hover:scale-105 hover:cursor-pointer" onClick={handleClick}>
             <img className="rounded-t-lg" src={movie.poster_path ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}` : "https://www.movienewz.com/img/films/poster-holder.jpg"} alt="" />
             <div className="p-3">
                 <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{movie.title}</h5>

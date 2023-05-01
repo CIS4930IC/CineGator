@@ -18,7 +18,6 @@ export default function Browse() {
     function search(e) {
         e.preventDefault();
         setMovieResult(data)
-        console.log(movieResult)
     }
 
     return (
@@ -35,7 +34,7 @@ export default function Browse() {
                         <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-red-700 hover:bg-red-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700">Search</button>
                     </div>
                 </form>
-                <div className="flex justify-center mt-10">
+                <div className="flex justify-center mt-10 mb-10">
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
                         {movieResult?.results?.map(movie => (
                             <MovieCard key={movie.id} id={movie.id} />
