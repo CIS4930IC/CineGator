@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import useSwr from "swr"
 import MovieCard from "../components/MovieCard"
 
@@ -9,15 +9,23 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 export default function Browse() {
     const [movieResult, setMovieResult] = useState([])
     const [query, setQuery] = useState("")
+    const [shouldFetch, setShouldFetch] = useState(false)
 
-    const { data, error } = useSwr(
-        () => query && `https://api.themoviedb.org/3/search/movie?api_key=${api}&query=${query}`,
+    const { data, error, isLoading } = useSwr(
+        () => shouldFetch && query && `https://api.themoviedb.org/3/search/movie?api_key=${api}&query=${query}`,
         fetcher
     )
 
+    useEffect(() => {
+        if (data) {
+            setMovieResult(data)
+            setShouldFetch(false)
+        }
+    }, [data])
+
     function search(e) {
         e.preventDefault();
-        setMovieResult(data)
+        setShouldFetch(true)
     }
 
     return (
@@ -34,16 +42,24 @@ export default function Browse() {
                         <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-red-700 hover:bg-red-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700">Search</button>
                     </div>
                 </form>
-                <div className="flex justify-center mt-10 mb-10">
-                    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
-                        {movieResult?.results?.map(movie => (
-                            <MovieCard key={movie.id} id={movie.id} />
-                        ))}
-                    </div>
-                </div>
+                {isLoading ?
+                    (<div className="flex justify-center items-center mt-20">
+                        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                        </div>
+                    </div>)
+                    : movieResult && movieResult.results && movieResult.results.length > 0 ?
+                        (<div className="flex justify-center mt-10 mb-10">
+                            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+                                {movieResult.results.map(movie => (
+                                    <MovieCard key={movie.id} id={movie.id} />
+                                ))}
+                            </div>
+                        </div>) : query != "" && movieResult && movieResult.results && movieResult.results.length <= 0 ? (
+                            <p className="text-white text-2xl font-medium flex items-center justify-center mt-20">{error ? 'An error occurred' : 'No movies found'}</p>
+                        ) : null}
                 {/* <h1 className="text-white text-4xl font-medium flex items-center justify-center mt-20">Recently Reviewed</h1> */}
             </div>
         </div>
-
     )
 }
