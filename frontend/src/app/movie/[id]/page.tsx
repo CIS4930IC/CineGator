@@ -1,10 +1,13 @@
 "use client"
 import { Inter } from "next/font/google"
 import Review from "../../components/Review"
-const inter = Inter({ subsets: ["latin"] })
 import useMovie from "../../util/useMovie"
+const inter = Inter({ subsets: ["latin"] })
+
 export default function Movie({ params }) {
   const { movie } = useMovie(params.id)
+  const posterUrl =
+    movie && `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
   return movie ? (
     <div>
       <nav
@@ -97,7 +100,9 @@ export default function Movie({ params }) {
       </nav>
       <div className="bg-white mx-8 my-12 rounded-md shadow-lg p-6 md:p-8 flex flex-col md:flex-row">
         <div className="flex-1 md:pr-6 my-8 mx-4 pl-4 pr-10">
-          <h1 className="text-5xl font-bold mb-2 text-gray-800">{movie.title}</h1>
+          <h1 className="text-5xl font-bold mb-2 text-gray-800">
+            {movie.title}
+          </h1>
           <div className="flex items-center mt-2 mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -114,13 +119,21 @@ export default function Movie({ params }) {
             <p className="text-lg mr-1 text-gray-600">4.5</p>
             <p className="text-sm text-gray-500">(42 ratings)</p>
           </div>
-          <p className="text-lg text-gray-800 max-w-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, molestiae eos! Vitae quasi optio sapiente eligendi suscipit obcaecati tenetur architecto fugiat iusto voluptatem sit, ex, corrupti at, nemo deserunt labore?</p>
+          <p className="text-lg text-gray-800 max-w-lg">{movie.overview}</p>
         </div>
         <div className="flex-1">
-          <img src="https://via.placeholder.com/1280x720" alt="Movie poster" className="w-full h-auto object-cover rounded-md shadow-lg" width="1280" height="720" />
+          <img
+            src={posterUrl}
+            alt="Movie poster"
+            className="w-full h-auto object-cover rounded-md shadow-lg"
+            width="1280"
+            height="720"
+          />
         </div>
       </div>
       <Review></Review>
     </div>
-  ) : <div></div>
+  ) : (
+    <div></div>
+  )
 }
