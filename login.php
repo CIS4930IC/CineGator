@@ -15,7 +15,7 @@
         $username = trim($_POST["username"]);
         $password = trim($_POST["password"]);
         if(!empty($username) && !empty($password)) {
-            $sql = "SELECT * FROM Users WHERE username='$username' AND password='$password'";
+            $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
 
             $result = $connection->query($sql);
             if($result -> num_rows) {
@@ -25,7 +25,7 @@
                     session_start();
                     $_SESSION["username"] = $username;
                     $result_row = $result->fetch_assoc();
-                    $_SESSION["name"] = $result_row["name"];
+                    $_SESSION["email"] = $result_row["email"];
                     $_SESSION["date"] = $result_row["date"];
                     $_SESSION["id"] = $result_row["id"];
                 }

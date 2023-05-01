@@ -6,6 +6,4 @@
 
     $_SESSION = array();
 
-    header("Refresh:3; url=index.php"); //go to home page
-
 ?>
