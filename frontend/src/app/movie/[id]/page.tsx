@@ -131,7 +131,9 @@ export default function Movie({ params }) {
           />
         </div>
       </div>
-      <Review></Review>
+      <div className="m-9">
+        <Review></Review>
+      </div>
     </div>
   ) : (
     <div></div>
