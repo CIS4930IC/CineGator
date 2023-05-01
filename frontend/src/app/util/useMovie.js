@@ -4,7 +4,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 export default function useMovie(id) {
   const { data, error } = useSwr(
-    () => id && `https://api.themoviedb.org/3/movie/${id}?api_key=${api}`,
+    () => id && `/api/movie/${id}`,
     fetcher
   )
   return {

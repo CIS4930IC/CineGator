@@ -2,12 +2,10 @@
 import { Inter } from "next/font/google"
 import Review from "../../components/Review"
 import useMovie from "../../util/useMovie"
-import useTrailer from "../../util/useTrailer"
 const inter = Inter({ subsets: ["latin"] })
 
 export default function Movie({ params }) {
   const { movie } = useMovie(params.id)
-  const { trailerLink } = useTrailer(params.id)
   return movie ? (
     <div>
       <nav
@@ -122,8 +120,13 @@ export default function Movie({ params }) {
           <p className="text-lg text-gray-800 max-w-lg">{movie.overview}</p>
         </div>
         <div className="flex-1">
-          {trailerLink ? (
-            <iframe width="1280" height="720" className="w-full h-auto object-cover rounded-md shadow-lg aspect-video" src={trailerLink}></iframe>
+          {movie.videoLink ? (
+            <iframe
+              width="1280"
+              height="720"
+              className="w-full h-auto object-cover rounded-md shadow-lg aspect-video"
+              src={movie.videoLink}
+            ></iframe>
           ) : (
             <img
               src="https://via.placeholder.com/1280x720"
