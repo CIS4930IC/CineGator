@@ -1,11 +1,12 @@
 'use client'
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
+import { useRouter } from 'next/navigation';
 import Link from "next/link"
 
 export default function Navbar() {
-    // Check if logged in
-    const [loggedIn, setLoggedIn] = useState(false);
+    const router = useRouter();
+    const [loggedIn, setLoggedIn] = useState(true);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
 
@@ -13,9 +14,11 @@ export default function Navbar() {
         setIsDropdownOpen(!isDropdownOpen);
     }
 
-    function handleSignout() {
-        // Call sign out
-        setLoggedIn(false);
+    const handleSignout = async (e) => {
+        const res = await fetch('/api/logout');
+        const data = await res.json();
+        console.log(data)
+        router.push('/');
     }
 
     if (loggedIn) {

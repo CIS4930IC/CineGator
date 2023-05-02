@@ -7,6 +7,7 @@ export default function Login() {
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,16 +15,26 @@ export default function Login() {
     // To-Do - Add validation
 
     // To-Do - Add API call to sign in user
-    const res = await fetch('/api/login.php', {
+    const formData = new URLSearchParams();
+    formData.append('username', username);
+    formData.append('password', password);
+
+    const res = await fetch('/api/login', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: JSON.stringify({ username, password })
+      body: formData,
     });
 
-    const data = await res.status;
+    const data = await res.json();
     console.log(data);
+
+    if (res.ok) {
+      router.push('/browse');
+    } else {
+      setError(data.message);
+    }
 
     // If successful: router.push('/route');
   }
@@ -49,6 +60,9 @@ export default function Login() {
             <div className="mt-2">
               <input onChange={(event) => setPassword(event.target.value)} id="password" name="password" type="password" autoComplete="current-password" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3" />
             </div>
+          </div>
+          <div className="flex">
+            {error && <div className="text-red-600 text-sm">{error}</div>}
           </div>
 
           <div>
