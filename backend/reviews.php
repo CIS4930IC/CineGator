@@ -1,13 +1,6 @@
 #!/usr/local/bin/php
-<html>
-<head>
-      <!--Movie title -->
-    <title></title>
-</head>
-
-<body>
-    <!-- <h2>Reviews for MOVIE NAME </h1> -->
-    <?php
+    
+<?php
     //Initial config
     $config = parse_ini_file("database/db_config.ini");
 
@@ -22,26 +15,11 @@
     $sql = "SELECT * FROM reviews WHERE movie_id = ";
     $result = $connection->query($sql);
 
-    echo "<table>";
-
-    //FORMATTING IS STILL BASIC, NEED TO CHANGE
     while($row = $result->fetch_assoc()) {
-        $title = $row["title"];
-        $rating = $row["rating"];
-        $review = $row["review"];
-        //PRINT NAME OF USER FROM USER_ID?
 
-        echo "<tr>";
-        echo "<td>$title</td>";
-        echo "<td>$rating</td>";
-        echo "<td>$review</td>";
-        //echo "<td>$name</td>";
-        echo "</tr>";
+
+    //PRINT NAME OF USER FROM USER_ID?
     }
 
-    echo "</table>";
     $connection->close();
-    ?>
-</body>
-</html>
-
+?>

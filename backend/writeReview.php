@@ -10,16 +10,13 @@
         die("Connection failed: " . $connection->connect_error);
     }
 
-    //$id from somewhere
-    //$user_id from somewhere
-    //$movie_id from somewhere
-    //HOW TO GET THESE?
-
+    $user_id = $_POST["userID"];
+    $movie_id = $_POST["movieID"];
     $title = $_POST["title"];
     $rating = $_POST["rating"];
-    $review = $_POST["review"];
+    $body = $_POST["body"];
 
-    $sql = "INSERT INTO reviews ('name', 'rating', 'review') VALUES ('$title', '$rating', '$review')";
+    $sql = "INSERT INTO reviews ('userID','movieID','title', 'rating', 'body') VALUES ('$user_id','$movie_id','$title', '$rating', '$body')";
     $result = $connection->query($sql);
 
     $connection->close();
