@@ -31,6 +31,7 @@ export default function Login() {
     console.log(data);
 
     if (res.ok) {
+      setError(null);
       router.push('/browse');
     } else {
       setError(data.message);

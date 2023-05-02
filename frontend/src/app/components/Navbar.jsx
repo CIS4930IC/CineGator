@@ -6,7 +6,7 @@ import Link from "next/link"
 
 export default function Navbar() {
     const router = useRouter();
-    const [loggedIn, setLoggedIn] = useState(true);
+    const [loggedIn, setLoggedIn] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
 

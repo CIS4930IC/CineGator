@@ -7,7 +7,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost/cinegator/:path*'
+        destination: 'http://localhost/cinegator/backend/:path*'
       }
     ]
   }
