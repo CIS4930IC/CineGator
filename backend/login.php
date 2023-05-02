@@ -29,30 +29,30 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
                 $_SESSION["email"] = $result_row["email"];
                 $_SESSION["id"] = $result_row["id"];
                 http_response_code(200);
-                $response = array("message" => "Login successful");
+                $response = array("message" => "Login successful.");
                 echo json_encode($response);
                 exit();
             } else {
                 http_response_code(401);
-                $response = array("message" => "Incorrect password");
+                $response = array("message" => "Incorrect password.");
                 echo json_encode($response);
                 exit();
             }
         } else {
             http_response_code(401);
-            $response = array("message" => "Incorrect username");
+            $response = array("message" => "Username not found.");
             echo json_encode($response);
             exit();
         }
     } else {
         http_response_code(400);
-        $response = array("message" => "Provide both username and password");
+        $response = array("message" => "Provide both username and password.");
         echo json_encode($response);
         exit();
     }
 } else {
     http_response_code(400);
-    $response = array("message" => "Provide credentials");
+    $response = array("message" => "Provide credentials.");
     echo json_encode($response);
     exit();
 }

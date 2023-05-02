@@ -1,16 +1,26 @@
-#!/usr/local/bin/php
 <?php
-    session_start();
-    //get rid of all user info
-    session_destroy();
+// Initialize the session.
+session_start();
 
-    setcookie(session_name(), '', time()-3600);
+// Unset all of the session variables.
+$_SESSION = array();
 
-    $_SESSION = array();
+// Kill the session cookie.
+$params = session_get_cookie_params();
+setcookie(
+    session_name(),
+    '',
+    time() - 42000,
+    $params["path"],
+    $params["domain"],
+    $params["secure"],
+    $params["httponly"]
+);
 
-    header("Refresh:3; url=index.php"); //go to login page
-?>
-<div class="container wrapper">
-    <h1 class="text-center">Logged Out</h1>
-    <p class="text-center text-danger"> Thank you for your visit. You are now logged out.</p>
-</div>
+// Finally, destroy the session.
+session_destroy();
+
+$response = array("message" => "Successfully logged out.");
+echo json_encode($response);
+
+exit();
