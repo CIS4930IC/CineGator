@@ -6,7 +6,7 @@ import Link from "next/link"
 
 export default function Navbar() {
     const router = useRouter();
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
 
@@ -15,7 +15,7 @@ export default function Navbar() {
     }
 
     const handleSignout = async (e) => {
-        const res = await fetch('/api/logout');
+        const res = await fetch('/backend/logout');
         const data = await res.json();
         console.log(data)
         router.push('/');
