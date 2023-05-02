@@ -27,7 +27,6 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
                 session_start();
                 $_SESSION["username"] = $result_row["username"];
                 $_SESSION["email"] = $result_row["email"];
-                $_SESSION["date"] = $result_row["date"];
                 $_SESSION["id"] = $result_row["id"];
                 http_response_code(200);
                 $response = array("message" => "Login successful");
