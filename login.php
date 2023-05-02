@@ -22,13 +22,15 @@
                 $result_row = $result->fetch_assoc();
                 if(password_verify($password, $result_row["password"])) {
                     //valid user so we can start their session
-                    session_start();
-                    $_SESSION["username"] = $username;
-                    $result_row = $result->fetch_assoc();
-                    $_SESSION["email"] = $result_row["email"];
-                    $_SESSION["date"] = $result_row["date"];
-                    $_SESSION["id"] = $result_row["id"];
+                    // session_start();
+                    // $_SESSION["username"] = $username;
+                    // $result_row = $result->fetch_assoc();
+                    // $_SESSION["email"] = $result_row["email"];
+                    // $_SESSION["date"] = $result_row["date"];
+                    // $_SESSION["id"] = $result_row["id"];
                 }
+                $json = json_encode($result_row);
+                echo $json;
             }
         }
     }
@@ -36,6 +38,7 @@
         echo "provide credentials";
     }
 
-    header("Location: index.php"); //go to home page
+    header("Refresh:3; url=home.php"); //go to home page
+    
     $connection->close();
 ?>
