@@ -1,4 +1,3 @@
-#!/usr/local/bin/php
 <?php
     //start a new session for new user
     session_start();
@@ -7,7 +6,6 @@
 
     $connection = mysqli_init();
     mysqli_real_connect($connection, $config["servername"], $config["username"], $config["password"], $config["dbname"], 3306, NULL, MYSQLI_CLIENT_SSL);
-    // $connection = new mysqli($config["servername"], $config["username"], $config["password"], $config["dbname"]);
 
     if ($connection->connect_error) {
         die("Connection failed: " . $connection->connect_error);
@@ -19,7 +17,7 @@
     $date = date("Y/m/d");
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$hashed_password'";
+    $sql = "SELECT * FROM users WHERE username='$username'";
 
     $search_result = $connection->query($sql);
 
@@ -34,23 +32,18 @@
         $_SESSION["username"] = $username;
         $_SESSION["password"] = $hashed_password;
         $_SESSION["email"] = $email;
-        $_SESSION["date"] = $date;
         $result_row = $retry_result->fetch_assoc();
         $_SESSION["id"] = $result_row["id"];
 
+        http_response_code(200);
+        $response = array("message" => "Registration successful.");
+        echo json_encode($response);
+    } else {
+        http_response_code(401);
+        $response = array("message" => "Username already exists.");
+        echo json_encode($response);
+        exit();
     }
-    header("Refresh:3; url=account.php"); //go to home page
-?>
-
-    <div>
-        <h1 class="text-center text-success">You have successfully registered!</h1>
-    </div>
-    
-<?php
-    $row = $retry_result->fetch_assoc();
-    $json = json_encode($row);
-
-    echo $json;
 
     $connection->close();
 ?>
