@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
     //start a new session for new user
-    // session_start();
+    session_start();
 
     $config = parse_ini_file("database/db_config.ini");
 
@@ -17,28 +17,29 @@
     $username = $_POST["username"];
     $password = $_POST["password"];
     $date = date("Y/m/d");
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM users WHERE username='$username' AND password='$hashed_password'";
 
     $search_result = $connection->query($sql);
 
     if($search_result -> num_rows == 0) {
-        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+        // $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         $sqlinsert = "INSERT INTO users (`email`, `username`, `password`, `creationDate`) VALUES ('$email', '$username', '$hashed_password', '$date')";
 
         $result = $connection->query($sqlinsert);
 
         $retry_result = $connection->query($sql);
 
-        // $_SESSION["username"] = $username;
-        // $_SESSION["password"] = $hashed_password;
-        // $_SESSION["email"] = $email;
-        // $_SESSION["date"] = $date;
-        // $result_row = $retry_result->fetch_assoc();
-        // $_SESSION["id"] = $result_row["id"];
+        $_SESSION["username"] = $username;
+        $_SESSION["password"] = $hashed_password;
+        $_SESSION["email"] = $email;
+        $_SESSION["date"] = $date;
+        $result_row = $retry_result->fetch_assoc();
+        $_SESSION["id"] = $result_row["id"];
 
     }
-    header("Refresh:3; url=index.php"); //go to home page
+    header("Refresh:3; url=account.php"); //go to home page
 ?>
 
     <div>

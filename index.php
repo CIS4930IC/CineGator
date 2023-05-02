@@ -46,14 +46,14 @@
             <label style="margin-left: 75px;">Username: </label>
             <input type="text" name="username" id="username" required><br><br>
             <label style="margin-left: 75px;">Password: </label>
-            <input type="text" name="password" id="password" required><br><br>
+            <input type="password" name="password" id="password" required><br><br>
             <input style='margin-left: 75px;' type='button' value='Register' onClick='register()'>
         </form>
         <hr><br><form method="post" name='form2'>
         <label style="margin-left: 75px;">Username: </label>
             <input type="text" name="username" id="username" required><br><br>
             <label style="margin-left: 75px;">Password: </label>
-            <input type="text" name="password" id="password" required><br><br>
+            <input type="password" name="password" id="password" required><br><br>
             <input style="margin-left: 75px;" type='button' value='Login' onClick='login()'>
         </form>
         <!-- <input style="margin-left: 780px;" type='button' value='Login' onClick="document.location.href=loginForm.php"> -->
