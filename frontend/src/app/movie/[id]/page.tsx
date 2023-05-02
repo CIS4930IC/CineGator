@@ -139,7 +139,9 @@ export default function Movie({ params }) {
         </div>
       </div>
       <div className="m-9">
-        <Review></Review>
+        {movie.reviews.map(id => (
+          <Review reviewId={id} key={id}></Review>
+        ))}
       </div>
     </div>
   ) : (
