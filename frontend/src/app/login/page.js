@@ -11,12 +11,19 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Username: " + username);
-    console.log("Password: " + password);
-
     // To-Do - Add validation
 
     // To-Do - Add API call to sign in user
+    const res = await fetch('http://localhost/cinegator/login.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    });
+
+    const data = await res.json();
+    console.log(data);
 
     // If successful: router.push('/route');
   }
@@ -30,17 +37,17 @@ export default function Login() {
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" action="#" method="POST">
           <div>
-            <label htmlhtmlFor='username' className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Username</label>
+            <label htmlFor='username' className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Username</label>
             <div className="mt-2">
-              <input onChange={(event) => setUsername(event.target.value)} id="username" name="username" type="username" autocomplete="username" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3" />
+              <input onChange={(event) => setUsername(event.target.value)} id="username" name="username" type="username" autoComplete="username" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3" />
             </div>
           </div>
           <div>
             <div className="flex items-center justify-between">
-              <label htmlhtmlFor="password" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Password</label>
+              <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Password</label>
             </div>
             <div className="mt-2">
-              <input onChange={(event) => setPassword(event.target.value)} id="password" name="password" type="password" autocomplete="current-password" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3" />
+              <input onChange={(event) => setPassword(event.target.value)} id="password" name="password" type="password" autoComplete="current-password" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3" />
             </div>
           </div>
 
