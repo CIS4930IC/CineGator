@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export default function Navbar() {
     // Check if logged in
-    const [loggedIn, setLoggedIn] = useState(true);
+    const [loggedIn, setLoggedIn] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
 

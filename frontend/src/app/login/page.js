@@ -14,7 +14,7 @@ export default function Login() {
     // To-Do - Add validation
 
     // To-Do - Add API call to sign in user
-    const res = await fetch('http://localhost/cinegator/login.php', {
+    const res = await fetch('/api/login.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ export default function Login() {
       body: JSON.stringify({ username, password })
     });
 
-    const data = await res.json();
+    const data = await res.status;
     console.log(data);
 
     // If successful: router.push('/route');
