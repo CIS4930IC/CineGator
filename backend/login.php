@@ -1,41 +1,60 @@
-#!/usr/local/bin/php
 <?php
-    $config = parse_ini_file("database/db_config.ini");
+$config = parse_ini_file("database/db_config.ini");
 
-    $connection = new mysqli($config["servername"], $config["username"], $config["password"], $config["dbname"]);
+$connection = mysqli_init();
+mysqli_real_connect($connection, $config["servername"], $config["username"], $config["password"], $config["dbname"], 3306, NULL, MYSQLI_CLIENT_SSL);
 
-    if ($connection->connect_error) {
-        die("Connection failed: " . $connection->connect_error);
-    }
+if ($connection->connect_error) {
+    $response = array("status" => "error", "message" => "Connection failed: " . $connection->connect_error);
+    echo json_encode($response);
+    exit();
+}
 
-    $username = "";
-    $password = "";
+$username = "";
+$password = "";
 
-    if(isset($_POST["username"]) && isset($_POST["password"])) {
-        $username = trim($_POST["username"]);
-        $password = trim($_POST["password"]);
-        if(!empty($username) && !empty($password)) {
-            $sql = "SELECT * FROM Users WHERE username='$username' AND password='$password'";
+if (isset($_POST["username"]) && isset($_POST["password"])) {
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);
 
-            $result = $connection->query($sql);
-            if($result -> num_rows) {
-                $result_row = $result->fetch_assoc();
-                if(password_verify($password, $result_row["password"])) {
-                    //valid user so we can start their session
-                    session_start();
-                    $_SESSION["username"] = $username;
-                    $result_row = $result->fetch_assoc();
-                    $_SESSION["name"] = $result_row["name"];
-                    $_SESSION["date"] = $result_row["date"];
-                    $_SESSION["id"] = $result_row["id"];
-                }
+    if (!empty($username) && !empty($password)) {
+        $sql = "SELECT * FROM users WHERE username='$username'";
+
+        $result = $connection->query($sql);
+        if ($result->num_rows) {
+            $result_row = $result->fetch_assoc();
+            if (password_verify($password, $result_row["password"])) {
+                session_start();
+                $_SESSION["username"] = $result_row["username"];
+                $_SESSION["email"] = $result_row["email"];
+                $_SESSION["id"] = $result_row["id"];
+                http_response_code(200);
+                $response = array("message" => "Login successful");
+                echo json_encode($response);
+                exit();
+            } else {
+                http_response_code(401);
+                $response = array("message" => "Incorrect password");
+                echo json_encode($response);
+                exit();
             }
+        } else {
+            http_response_code(401);
+            $response = array("message" => "Incorrect username");
+            echo json_encode($response);
+            exit();
         }
+    } else {
+        http_response_code(400);
+        $response = array("message" => "Provide both username and password");
+        echo json_encode($response);
+        exit();
     }
-    else {
-        echo "provide credentials";
-    }
+} else {
+    http_response_code(400);
+    $response = array("message" => "Provide credentials");
+    echo json_encode($response);
+    exit();
+}
 
-    header("Location: index.php"); //go to home page
-    $connection->close();
-?>
+$connection->close();
