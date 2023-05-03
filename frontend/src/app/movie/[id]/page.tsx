@@ -12,7 +12,7 @@ export default function Movie({ params }) {
   const handleReview = () => {
     router.push(`/movie/${params.id}/review`)
   }
-  let hasReview = movie?.reviews?.length > 0
+  const reviewLength = movie?.reviews?.length || 0
   return movie ? (
     <div className="mt-24">
       <div className="bg-red-900 mx-8 my-12 rounded-md shadow-lg p-6 md:p-8 flex flex-col md:flex-row">
@@ -32,7 +32,7 @@ export default function Movie({ params }) {
               />
             </svg>
             <p className="text-lg mr-1 text-white">4.5</p>
-            <p className="text-sm text-white">(42 ratings)</p>
+            <p className="text-sm text-white">({reviewLength} ratings)</p>
           </div>
           <p className="text-lg text-white max-w-lg">{movie.overview}</p>
         </div>
@@ -66,12 +66,9 @@ export default function Movie({ params }) {
           </button>
         </div>
         <hr className="mb-6" />
-        {hasReview ? (
-          movie.reviews.map?.(review => (
-            <Review
-              review={review}
-              key={review.id}
-            ></Review>
+        {reviewLength > 0 ? (
+          movie.reviews.map(review => (
+            <Review review={review} key={review.id}/>
           ))
         ) : (
           <p>No reviews, write one!</p>
