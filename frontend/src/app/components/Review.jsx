@@ -2,7 +2,7 @@ import useSwr from "swr"
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 export default function Review({ reviewId }) {
   const { data, error } = useSwr(
-    () => reviewId && `/api/review/${reviewId}`,
+    () => reviewId && `/backend/review/${reviewId}`,
     fetcher
   )
   return data ? (
