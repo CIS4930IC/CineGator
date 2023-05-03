@@ -32,6 +32,6 @@ if (isset($_POST["movieID"])) {
     echo json_encode(array("message" => "Provide movie ID."));
 }
 
-exit();
 $connection->close();
+exit();
 ?>
