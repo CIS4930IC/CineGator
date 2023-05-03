@@ -17,9 +17,10 @@ export async function GET(
   ).then(res => res.json())
   const formData = new URLSearchParams()
   formData.append("movieID", params.id)
-  const fetchReview = fetch(`/backend/reviews`, { body: formData }).then(res =>
-    res.json()
-  )
+  const fetchReview = fetch(`/backend/reviews`, {
+    body: formData,
+    method: "POST",
+  }).then(res => res.json())
   const [movie, trailer, reviews] = await Promise.all([
     fetchMovie,
     fetchTrailer,
