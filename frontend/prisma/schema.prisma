@@ -8,9 +8,22 @@ datasource db {
 }
 
 model users {
-  id           Int      @id @default(autoincrement())
-  email        String   @db.VarChar(255)
-  username     String   @db.VarChar(255)
-  password     String   @db.VarChar(255)
-  creationDate DateTime @db.Date
+  id           Int       @id @default(autoincrement())
+  email        String    @db.VarChar(255)
+  username     String    @db.VarChar(255)
+  password     String    @db.VarChar(255)
+  creationDate DateTime  @db.Date
+  reviews      reviews[]
+}
+
+model reviews {
+  id      Int    @id @default(autoincrement())
+  userID  Int
+  movieID Int
+  title   String @db.VarChar(255)
+  rating  Int
+  body    String @db.VarChar(255)
+  users   users  @relation(fields: [userID], references: [id], onUpdate: Restrict, map: "reviews_ibfk_1")
+
+  @@index([userID], map: "userID")
 }
