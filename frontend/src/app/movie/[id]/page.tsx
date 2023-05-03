@@ -14,7 +14,7 @@ export default function Movie({ params }) {
   }
   const reviewLength = movie?.reviews?.length || 0
   const rating =
-    movie?.reviews?.reduce((acc, review) => acc + Number(review.rating), 0) /
+    movie?.reviews?.reduce?.((acc, review) => acc + Number(review.rating), 0) /
       reviewLength || 0
   return movie ? (
     <div className="mt-24">
