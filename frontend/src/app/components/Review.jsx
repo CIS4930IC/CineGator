@@ -1,6 +1,9 @@
 import useSwr from "swr"
 const fetcher = (...args) => fetch(...args).then(res => res.json())
-export default function Review({ title, body, rating }) {
+
+export default function Review({ review }) {
+  const { title, body, userID, rating } = review
+  const { data, error } = useSwr(`/backend/user.php?id=${userID}`, fetcher)
   return (
     <article>
       <div className="flex items-center mb-4 space-x-4">
@@ -10,7 +13,7 @@ export default function Review({ title, body, rating }) {
           alt=""
         />
         <div className="space-y-1 font-medium dark:text-white">
-          <p>Jese Leos </p>
+          <p>{data?.username} </p>
         </div>
       </div>
       <div className="flex items-center mb-1">

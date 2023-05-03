@@ -69,9 +69,7 @@ export default function Movie({ params }) {
         {hasReview ? (
           movie.reviews.map?.(review => (
             <Review
-              title={review.title}
-              body={review.body}
-              rating={review.rating}
+              review={review}
               key={review.id}
             ></Review>
           ))
