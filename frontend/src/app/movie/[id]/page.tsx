@@ -15,9 +15,9 @@ export default function Movie({ params }) {
 
   return movie ? (
     <div className="mt-24">
-      <div className="bg-white mx-8 my-12 rounded-md shadow-lg p-6 md:p-8 flex flex-col md:flex-row">
+      <div className="bg-red-900 mx-8 my-12 rounded-md shadow-lg p-6 md:p-8 flex flex-col md:flex-row">
         <div className="flex-1 md:pr-6 my-8 mx-4 pl-4 pr-10">
-          <h1 className="text-5xl font-bold mb-2 text-gray-800">
+          <h1 className="text-5xl font-bold mb-2 text-white">
             {movie.title}
           </h1>
           <div className="flex items-center mt-2 mb-4">
@@ -33,10 +33,10 @@ export default function Movie({ params }) {
                 clipRule="evenodd"
               />
             </svg>
-            <p className="text-lg mr-1 text-gray-600">4.5</p>
-            <p className="text-sm text-gray-500">(42 ratings)</p>
+            <p className="text-lg mr-1 text-white">4.5</p>
+            <p className="text-sm text-white">(42 ratings)</p>
           </div>
-          <p className="text-lg text-gray-800 max-w-lg">{movie.overview}</p>
+          <p className="text-lg text-white max-w-lg">{movie.overview}</p>
         </div>
         <div className="flex-1">
           {movie.videoLink ? (
