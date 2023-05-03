@@ -29,6 +29,7 @@
 
         $retry_result = $connection->query($sql);
 
+        $_SESSION["loggedIn"] = true;
         $_SESSION["username"] = $username;
         $_SESSION["password"] = $hashed_password;
         $_SESSION["email"] = $email;

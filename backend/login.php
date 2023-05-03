@@ -25,13 +25,13 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             $result_row = $result->fetch_assoc();
             if (password_verify($password, $result_row["password"])) {
                 session_start();
+                $_SESSION["loggedIn"] = true;
                 $_SESSION["username"] = $result_row["username"];
                 $_SESSION["email"] = $result_row["email"];
                 $_SESSION["id"] = $result_row["id"];
                 http_response_code(200);
                 $response = array("message" => "Login successful.");
                 echo json_encode($response);
-                exit();
             } else {
                 http_response_code(401);
                 $response = array("message" => "Incorrect password.");
