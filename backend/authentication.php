@@ -4,6 +4,7 @@
         http_response_code(200);
         $response = array(
             'loggedIn' => true,
+            'id' => $_SESSION["id"],
             'username' => $_SESSION["username"],
             'email' => $_SESSION["email"]
         );

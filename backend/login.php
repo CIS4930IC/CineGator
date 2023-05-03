@@ -18,9 +18,11 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     $password = trim($_POST["password"]);
 
     if (!empty($username) && !empty($password)) {
-        $sql = "SELECT * FROM users WHERE username='$username'";
+        $stmt = $connection->prepare("SELECT * FROM users WHERE username=?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        $result = $connection->query($sql);
         if ($result->num_rows) {
             $result_row = $result->fetch_assoc();
             if (password_verify($password, $result_row["password"])) {

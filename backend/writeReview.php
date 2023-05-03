@@ -17,8 +17,12 @@ if (isset($_POST["userID"]) && isset($_POST["movieID"]) && isset($_POST["title"]
     $title = $_POST["title"];
     $rating = $_POST["rating"];
     $body = $_POST["body"];
-    $sql = "INSERT INTO reviews (`userID`,`movieID`,`title`, `rating`, `body`) VALUES ($user_id, $movie_id, '$title', $rating, '$body')";
-    $result = $connection->query($sql);
+
+    // Protect from SQL injection
+    $stmt = $connection->prepare("INSERT INTO reviews (`userID`,`movieID`,`title`, `rating`, `body`) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("iisds", $user_id, $movie_id, $title, $rating, $body);
+    $stmt->execute();
+    
     http_response_code(200);
     // Return review
     $response = array(
