@@ -17,10 +17,11 @@ export async function GET(
   ).then(res => res.json())
   const formData = new URLSearchParams()
   formData.append("movieID", params.id)
-  const fetchReview = fetch('/backend/reviews', {
+  const baseUrl = request.nextUrl.origin
+  const fetchReview = fetch(baseUrl + "/backend/reviews.php", {
     body: formData,
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      "Content-Type": "application/x-www-form-urlencoded",
     },
     method: "POST",
   }).then(res => res.json())

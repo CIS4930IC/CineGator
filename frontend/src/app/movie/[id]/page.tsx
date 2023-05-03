@@ -2,24 +2,22 @@
 import { Inter } from "next/font/google"
 import Review from "../../components/Review"
 import useMovie from "../../util/useMovie"
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation"
 const inter = Inter({ subsets: ["latin"] })
 
 export default function Movie({ params }) {
   const { movie } = useMovie(params.id)
-  const router = useRouter();
+  const router = useRouter()
 
   const handleReview = () => {
-    router.push(`/movie/${params.id}/review`);
+    router.push(`/movie/${params.id}/review`)
   }
-
+  let hasReview = movie?.reviews?.length > 0
   return movie ? (
     <div className="mt-24">
       <div className="bg-red-900 mx-8 my-12 rounded-md shadow-lg p-6 md:p-8 flex flex-col md:flex-row">
         <div className="flex-1 md:pr-6 my-8 mx-4 pl-4 pr-10">
-          <h1 className="text-5xl font-bold mb-2 text-white">
-            {movie.title}
-          </h1>
+          <h1 className="text-5xl font-bold mb-2 text-white">{movie.title}</h1>
           <div className="flex items-center mt-2 mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,14 +58,19 @@ export default function Movie({ params }) {
       <div className="m-9">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-4xl font-semibold">User Reviews</h2>
-          <button onClick={handleReview} className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded">
+          <button
+            onClick={handleReview}
+            className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"
+          >
             Add Review
           </button>
         </div>
         <hr className="mb-6" />
-        {movie.reviews.map(id => (
-          <Review reviewId={id} key={id}></Review>
-        ))}
+        {hasReview ? (
+          movie.reviews.map?.(id => <Review reviewId={id} key={id}></Review>)
+        ) : (
+          <p>No reviews, write one!</p>
+        )}
       </div>
     </div>
   ) : (
