@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true) {
         http_response_code(200);
         $response = array(
