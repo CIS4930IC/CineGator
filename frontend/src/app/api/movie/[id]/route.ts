@@ -8,7 +8,6 @@ export async function GET(
     params: { id: string }
   }
 ) {
-  const baseUrl = request.nextUrl.origin
   const { id } = params
   const fetchMovie = fetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=${api}`
@@ -16,7 +15,9 @@ export async function GET(
   const fetchTrailer = fetch(
     `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api}&language=en-US`
   ).then(res => res.json())
-  const fetchReview = fetch(`${baseUrl}/api/review?movie_id=${id}`).then(res =>
+  const formData = new URLSearchParams()
+  formData.append("movieID", params.id)
+  const fetchReview = fetch(`/backend/reviews`, { body: formData }).then(res =>
     res.json()
   )
   const [movie, trailer, reviews] = await Promise.all([
