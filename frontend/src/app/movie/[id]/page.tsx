@@ -2,100 +2,19 @@
 import { Inter } from "next/font/google"
 import Review from "../../components/Review"
 import useMovie from "../../util/useMovie"
+import { useRouter } from 'next/navigation';
 const inter = Inter({ subsets: ["latin"] })
 
 export default function Movie({ params }) {
   const { movie } = useMovie(params.id)
+  const router = useRouter();
+
+  const handleReview = () => {
+    router.push(`/movie/${params.id}/review`);
+  }
+
   return movie ? (
-    <div>
-      <nav
-        className="relative flex w-full items-center justify-between bg-white py-2 text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-200 md:flex-wrap md:justify-start"
-        data-te-navbar-ref
-      >
-        <div className="px-6">
-          <button
-            className="border-0 bg-transparent py-3 px-2 text-xl leading-none md:hidden"
-            type="button"
-            data-te-collapse-init
-            data-te-target="#navbarSupportedContentO"
-            aria-controls="navbarSupportedContentO"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="[&>svg]:w-5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-            </span>
-          </button>
-          <div
-            className="!visible hidden grow basis-[100%] items-center md:!flex md:basis-auto"
-            id="navbarSupportedContentO"
-            data-te-collapse-item
-          >
-            <ul
-              className="mr-auto flex flex-col md:flex-row"
-              data-te-navbar-nav-ref
-            >
-              <li data-te-nav-item-ref>
-                <a
-                  className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white md:p-2 [&.active]:border-primary [&.active]:text-primary"
-                  href="#!"
-                  data-te-nav-link-ref
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                >
-                  Home
-                </a>
-              </li>
-              <li data-te-nav-item-ref>
-                <a
-                  className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white md:p-2 [&.active]:border-primary [&.active]:text-primary"
-                  href="#!"
-                  data-te-nav-link-ref
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                >
-                  Features
-                </a>
-              </li>
-              <li data-te-nav-item-ref>
-                <a
-                  className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white md:p-2 [&.active]:border-primary [&.active]:text-primary"
-                  href="#!"
-                  data-te-nav-link-ref
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                >
-                  Pricing
-                </a>
-              </li>
-              <li data-te-nav-item-ref>
-                <a
-                  className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white md:p-2 [&.active]:border-primary [&.active]:text-primary "
-                  href="#!"
-                  data-te-nav-link-ref
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                >
-                  About
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <div className="mt-24">
       <div className="bg-white mx-8 my-12 rounded-md shadow-lg p-6 md:p-8 flex flex-col md:flex-row">
         <div className="flex-1 md:pr-6 my-8 mx-4 pl-4 pr-10">
           <h1 className="text-5xl font-bold mb-2 text-gray-800">
@@ -139,6 +58,13 @@ export default function Movie({ params }) {
         </div>
       </div>
       <div className="m-9">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-4xl font-semibold">User Reviews</h2>
+          <button onClick={handleReview} className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded">
+            Add Review
+          </button>
+        </div>
+        <hr className="mb-6" />
         {movie.reviews.map(id => (
           <Review reviewId={id} key={id}></Review>
         ))}

@@ -7,6 +7,7 @@ export default async function auth() {
     if (!response.ok) {
         return {
             success: false,
+            userID: null,
             username: null,
         }
     }
@@ -15,6 +16,7 @@ export default async function auth() {
     
     return {
         success: data.loggedIn,
+        userID: data.id,
         username: data.username,
     }
 }
