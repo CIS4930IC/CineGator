@@ -67,7 +67,14 @@ export default function Movie({ params }) {
         </div>
         <hr className="mb-6" />
         {hasReview ? (
-          movie.reviews.map?.(id => <Review reviewId={id} key={id}></Review>)
+          movie.reviews.map?.(id => (
+            <Review
+              title={id.title}
+              body={id.body}
+              rating={id.rating}
+              key={id}
+            ></Review>
+          ))
         ) : (
           <p>No reviews, write one!</p>
         )}

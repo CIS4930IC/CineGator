@@ -54,7 +54,7 @@ export default function Review({ params }) {
         formData.append('rating', rating);
         formData.append('body', body.trim());
 
-        const res = await fetch('/backend/writeReview', {
+        const res = await fetch('/backend/writeReview.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'

@@ -1,5 +1,5 @@
 export default async function auth() {
-    const response = await fetch('/backend/authentication', {
+    const response = await fetch('/backend/authentication.php', {
         method: 'GET',
         credentials: 'include'
     })
