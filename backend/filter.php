@@ -10,7 +10,7 @@
         exit();
     }
 
-    $sql = "SELECT * FROM reviews";
+    $sql = "SELECT * FROM reviews ORDER BY id DESC";
     $result = $connection->query($sql);
     if ($result !== false && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
