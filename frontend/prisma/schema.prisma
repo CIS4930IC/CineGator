@@ -7,15 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model users {
-  id           Int       @id @default(autoincrement())
-  email        String    @db.VarChar(255)
-  username     String    @db.VarChar(255)
-  password     String    @db.VarChar(255)
-  creationDate DateTime  @db.Date
-  reviews      reviews[]
-}
-
 model reviews {
   id      Int    @id @default(autoincrement())
   userID  Int
@@ -26,4 +17,13 @@ model reviews {
   users   users  @relation(fields: [userID], references: [id], onUpdate: Restrict, map: "reviews_ibfk_1")
 
   @@index([userID], map: "userID")
+}
+
+model users {
+  id           Int       @id @default(autoincrement())
+  email        String    @db.VarChar(255)
+  username     String    @db.VarChar(255)
+  password     String    @db.VarChar(255)
+  creationDate DateTime  @db.Date
+  reviews      reviews[]
 }
