@@ -3,12 +3,24 @@ import React, { useEffect, useState } from "react"
 import Image from "next/image"
 import { useRouter } from 'next/navigation';
 import Link from "next/link"
+import auth from "../util/auth";
 
-export default function Navbar() {
+export default function Navbar({ username }) {
     const router = useRouter();
     const [loggedIn, setLoggedIn] = useState(true);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+    // useEffect(() => {
+    //     const checkAuth = async () => {
+    //         const res = await authenticate();
+    //         if (res.status === 200) {
+    //             setLoggedIn(true);
+    //         } else {
+    //             setLoggedIn(false);
+    //         }
+    //     }
+    //     checkAuth();
+    // }, [])
 
     function handleDropdownToggle() {
         setIsDropdownOpen(!isDropdownOpen);
@@ -21,7 +33,7 @@ export default function Navbar() {
         router.push('/');
     }
 
-    if (loggedIn) {
+    if (username != null && username != undefined && username != '') {
         return (
             <nav className="bg-white dark:bg-black fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -35,8 +47,7 @@ export default function Navbar() {
                         </button>
                         <div className={`z-50 ${isDropdownOpen ? '' : 'hidden'} absolute mt-12 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`} id="user-dropdown">
                             <div className="px-4 py-3">
-                                <span className="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-                                <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                                <span className="block text-sm text-gray-900 dark:text-white">{username}</span>
                             </div>
                             <ul className="py-2" aria-labelledby="user-menu-button">
                                 <li>
