@@ -49,10 +49,10 @@ export default function Signup() {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (res.ok) {
       setError(null);
+      router.refresh();
       router.push('/browse');
     } else {
       setError(data.message);

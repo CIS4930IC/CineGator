@@ -1,5 +1,5 @@
 export default async function auth() {
-    const response = await fetch(`/backend/authenticate`, {
+    const response = await fetch('/backend/authentication', {
         method: 'GET',
         credentials: 'include'
     })
@@ -7,13 +7,14 @@ export default async function auth() {
     if (!response.ok) {
         return {
             success: false,
-            username: null
+            username: null,
         }
     }
 
     const data = await response.json()
+    
     return {
-        success: true,
-        username: data.username
+        success: data.loggedIn,
+        username: data.username,
     }
 }
