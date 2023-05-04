@@ -1,6 +1,6 @@
 export default function About() {
     return (
-        <div className="relative h-screen overflow-hidden bg-cover bg-no-repeat p-12 text-center">
+        <div className="relative h-screen overflow-hidden bg-cover bg-no-repeat p-12 text-center bg-black">
             <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[rgba(2, 56, 53, 0.7)]">
                 <div className="flex h-full items-center justify-center">
                     <div className="text-white">
