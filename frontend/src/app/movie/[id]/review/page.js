@@ -71,22 +71,22 @@ export default function Review({ params }) {
     }
 
     return movie ? (
-        <div className="flex mt-24 flex-col justify-center px-6 lg:px-8">
+        <div className="flex flex-col justify-center px-6 lg:px-8 bg-black min-h-screen">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 className="text-center text-3xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">Create a Review</h2>
+                <h2 className="text-center text-3xl font-bold leading-9 tracking-tight text-white">Create a Review</h2>
                 <h2 className="text-center text-xl font-bold leading-9 tracking-tight text-red-600">{movie.title}</h2>
             </div>
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-lg">
                 <form className="space-y-6" action="#" method="POST">
                     <div>
-                        <label htmlFor="title" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Title</label>
+                        <label htmlFor="title" className="block text-sm font-medium leading-6 text-white">Title</label>
                         <div className="mt-2">
-                            <input onChange={(e) => setTitle(e.target.value)} id="title" name="title" type="title" autoComplete="title" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset sm:text-sm sm:leading-6 px-3" />
+                            <input onChange={(e) => setTitle(e.target.value)} id="title" name="title" type="title" autoComplete="title" required className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset sm:text-sm sm:leading-6 px-3 bg-gray-800" />
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rating</label>
-                        <select id="countries" className="border border-white text-white text-sm rounded-lg block w-full p-2.5 focus:ring-white focus:border-white" defaultValue="" onChange={(e) => setRating(e.target.value)}>
+                        <label htmlFor="countries" className="block mb-2 text-sm font-medium text-white">Rating</label>
+                        <select id="countries" className="border border-white text-white bg-gray-800 text-sm rounded-lg block w-full p-2.5 focus:ring-white focus:border-white" defaultValue="" onChange={(e) => setRating(e.target.value)}>
                             <option value="" disabled>Select a rating</option>
                             <option value="1">★</option>
                             <option value="2">★★</option>
@@ -96,8 +96,8 @@ export default function Review({ params }) {
                         </select>
                     </div>
                     <div>
-                        <label htmlFor="body" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
-                        <textarea onChange={(e) => setBody(e.target.value)} id="body" rows="4" className="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-white dark:placeholder-gray-400 dark:text-white" placeholder=""></textarea>
+                        <label htmlFor="body" className="block mb-2 text-sm font-medium text-white">Body</label>
+                        <textarea onChange={(e) => setBody(e.target.value)} id="body" rows="4" className="block p-2.5 w-full text-sm rounded-lg border border-white placeholder-gray-400 text-white bg-gray-800" placeholder=""></textarea>
                     </div>
                     <div className="flex">
                         {error && <div className="text-red-600 text-sm">{error}</div>}

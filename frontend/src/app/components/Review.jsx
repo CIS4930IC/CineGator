@@ -13,7 +13,7 @@ export default function Review({ review }) {
           src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
           alt=""
         />
-        <div className="space-y-1 font-medium dark:text-white">
+        <div className="space-y-1 font-medium text-white">
           <p>{data?.username} </p>
         </div>
       </div>
@@ -21,11 +21,11 @@ export default function Review({ review }) {
         {Array.from({ length: 5 }).map((_, i) =>
           i + 1 <= rating ? <FilledStar /> : <UnfilledStar />
         )}
-        <h3 className="ml-2 text-sm font-semibold text-gray-900 dark:text-white">
+        <h3 className="ml-2 text-sm font-semibold text-white">
           {title}
         </h3>
       </div>
-      <p className="mb-6 text-gray-500 dark:text-gray-400">{body}</p>
+      <p className="pb-6 text-gray-400">{body}</p>
     </article>
   )
 }

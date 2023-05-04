@@ -40,7 +40,7 @@ export default function Browse() {
     }
 
     return movieResult ? (
-        <div className="relative mt-16 flex flex-1 w-full">
+        <div className="relative mt-16 flex flex-1 w-full bg-black min-h-screen">
             <div className="mt-12 flex flex-col w-full">
                 <h1 className="text-white text-4xl font-medium flex items-center justify-center">Recently Reviewed Movies</h1>
                 <div className="flex justify-center mt-10 mb-8">

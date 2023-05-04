@@ -17,7 +17,7 @@ export default function Movie({ params }) {
     movie?.reviews?.reduce?.((acc, review) => acc + Number(review.rating), 0) /
       reviewLength || 0
   return movie ? (
-    <div className="mt-24">
+    <div className="bg-black pt-16">
       <div className="bg-red-900 mx-8 my-12 rounded-md shadow-lg p-6 md:p-8 flex flex-col md:flex-row">
         <div className="flex-1 md:pr-6 my-8 mx-4 pl-4 pr-10">
           <h1 className="text-5xl font-bold mb-2 text-white">{movie.title}</h1>
@@ -58,9 +58,9 @@ export default function Movie({ params }) {
           )}
         </div>
       </div>
-      <div className="m-9">
+      <div className="pb-9 px-9 pt-4">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-4xl font-semibold">User Reviews</h2>
+          <h2 className="text-4xl font-semibold text-white">User Reviews</h2>
           <button
             onClick={handleReview}
             className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"
