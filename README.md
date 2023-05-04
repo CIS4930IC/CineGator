@@ -12,3 +12,9 @@ CineGator offers a unique and interactive movie review system that allows you to
 - Xiaokai Li
 - Mackenzie Fileman
 - Eduardo Yoo
+
+## Online Resources Used
+- https://www.themoviedb.org/
+- https://www.canva.com/
+- https://unsplash.com/photos/evlkOfkQ5rE
+- https://www.pinterest.com/pin/307018899601420637/
