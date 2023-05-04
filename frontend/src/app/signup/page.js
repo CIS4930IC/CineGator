@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useState } from 'react'
+import auth from '../util/auth';
 
 export default function Signup() {
   const router = useRouter();
@@ -9,6 +10,15 @@ export default function Signup() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+
+  // Authenticate user.
+  const checkAuth = async () => {
+    const res = await auth();
+    if (res.success) {
+      router.push('/browse');
+    }
+  }
+  checkAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

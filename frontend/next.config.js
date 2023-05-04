@@ -7,7 +7,8 @@ const nextConfig = {
     return [
       {
         source: '/backend/:path*',
-        destination: 'https://www.cise.ufl.edu/~lixiaokai/cis4930/CineGator/backend/:path*'
+        //destination: 'https://www.cise.ufl.edu/~lixiaokai/cis4930/CineGator/backend/:path*'
+        destination: 'http://localhost/cinegator/backend/:path*'
       }
     ]
   }

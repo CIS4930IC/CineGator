@@ -1,7 +1,7 @@
 import useMovie from "../util/useMovie"
 import { useRouter } from "next/navigation"
 
-export default function MovieCard({ id }) {
+export default function MovieCard({ id, selectedGenre, selectedRuntime, selectedLanguage }) {
     const { movie, isLoading } = useMovie(id);
     const router = useRouter();
 
@@ -24,6 +24,10 @@ export default function MovieCard({ id }) {
             </div>
         )
     }
+
+    if (movie && selectedGenre && selectedGenre != "" && !movie?.genres?.some(genre => genre.name === selectedGenre)) return null;
+    if (movie && selectedRuntime && selectedRuntime != "" && movie?.runtime > selectedRuntime) return null;
+    if (movie && selectedLanguage && selectedLanguage != "" && !movie?.spoken_languages?.some(language => language.name === selectedLanguage)) return null;
 
     return (
         <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 max-w-[200px] transform transition duration-500 hover:scale-105 hover:cursor-pointer" onClick={handleClick}>
