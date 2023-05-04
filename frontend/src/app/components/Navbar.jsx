@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { useRouter } from 'next/navigation';
 import Link from "next/link"
@@ -7,10 +7,26 @@ import Link from "next/link"
 export default function Navbar({ user, setUser }) {
     const router = useRouter();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
 
     function handleDropdownToggle() {
         setIsDropdownOpen(!isDropdownOpen);
     }
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsDropdownOpen(false);
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [dropdownRef]);
+
 
     const handleSignout = async (e) => {
         const res = await fetch('/backend/logout');
@@ -29,17 +45,39 @@ export default function Navbar({ user, setUser }) {
                         <Image src="/images/logo.png" alt="CineGator Logo" height={1} width={190} />
                     </Link>
                     <div className="flex flex-col items-center md:order-2 relative">
-                        <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-700" id="user-menu-button" data-dropdown-placement="bottom" aria-expanded={isDropdownOpen} onClick={handleDropdownToggle}>
+                        <button
+                            type="button"
+                            className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-700"
+                            id="user-menu-button"
+                            data-dropdown-placement="bottom"
+                            aria-expanded={isDropdownOpen}
+                            onClick={handleDropdownToggle}
+                        >
                             <span className="sr-only">Open user menu</span>
-                            <img className="w-10 h-10 rounded-full" src="/images/profile.jpg" alt="user photo" />
+                            <img
+                                className="w-10 h-10 rounded-full"
+                                src="/images/profile.jpg"
+                                alt="user photo"
+                            />
                         </button>
-                        <div className={`z-50 ${isDropdownOpen ? '' : 'hidden'} min-w-max absolute mt-12 text-base list-none divide-y rounded-lg shadow bg-gray-700 divide-gray-600`} id="user-dropdown">
+                        <div
+                            className={`z-50 ${isDropdownOpen ? '' : 'hidden'
+                                } min-w-max absolute mt-12 text-base list-none divide-y rounded-lg shadow bg-gray-700 divide-gray-600`}
+                            id="user-dropdown"
+                            ref={dropdownRef}
+                        >
                             <div className="px-4 py-3">
                                 <span className="block text-sm text-white">{user}</span>
                             </div>
                             <ul className="py-2" aria-labelledby="user-menu-button">
                                 <li>
-                                    <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white" onClick={handleSignout}>Sign out</a>
+                                    <a
+                                        href="#"
+                                        className="block px-4 py-2 text-sm hover:bg-gray-600 text-gray-200 hover:text-white"
+                                        onClick={handleSignout}
+                                    >
+                                        Sign out
+                                    </a>
                                 </li>
                             </ul>
                         </div>
