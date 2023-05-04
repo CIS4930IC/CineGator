@@ -29,7 +29,7 @@ export default function Navbar({ user, setUser }) {
 
 
     const handleSignout = async (e) => {
-        const res = await fetch('/backend/logout');
+        const res = await fetch('/backend/logout.php');
         if (res.ok) {
             setUser(null);
             setIsDropdownOpen(false);

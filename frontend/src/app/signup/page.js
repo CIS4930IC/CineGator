@@ -50,7 +50,7 @@ export default function Signup() {
     formData.append('username', username);
     formData.append('password', password);
 
-    const res = await fetch('/backend/register', {
+    const res = await fetch('/backend/register.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
