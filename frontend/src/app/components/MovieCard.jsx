@@ -27,7 +27,7 @@ export default function MovieCard({ id, selectedGenre, selectedRuntime, selected
 
     if (movie && selectedGenre && selectedGenre != "" && !movie?.genres?.some(genre => genre.name === selectedGenre)) return null;
     if (movie && selectedRuntime && selectedRuntime != "" && movie?.runtime > selectedRuntime) return null;
-    if (movie && selectedLanguage && selectedLanguage != "" && !movie?.spoken_languages?.some(language => language.name === selectedLanguage)) return null;
+    if (movie && selectedLanguage && selectedLanguage != "" && !movie?.spoken_languages?.some(language => language.english_name === selectedLanguage)) return null;
 
     return (
         <div className="border rounded-lg shadow bg-gray-800 border-gray-700 max-w-[200px] transform transition duration-500 hover:scale-105 hover:cursor-pointer" onClick={handleClick}>
