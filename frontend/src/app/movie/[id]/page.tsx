@@ -21,12 +21,12 @@ export default function Movie({ params }) {
       <div className="bg-red-900 mx-8 my-12 rounded-md shadow-lg p-6 md:p-8 flex flex-col md:flex-row">
         <div className="flex-1 md:pr-6 my-8 mx-4 pl-4 pr-10">
           <h1 className="text-5xl font-bold mb-2 text-white">{movie.title}</h1>
-          <div className="flex items-center mt-2 mb-4">
+          <div className="flex items-center mb-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="w-8 h-8 text-yellow-500 mr-1"
+              className="w-8 h-8 text-yellow-500 mr-1 mb-2"
             >
               <path
                 fillRule="evenodd"

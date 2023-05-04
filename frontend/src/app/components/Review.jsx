@@ -7,14 +7,14 @@ export default function Review({ review }) {
   const { data, error } = useSwr(`/backend/user.php?id=${userID}`, fetcher)
   return (
     <article>
-      <div className="flex items-center mb-4 space-x-4">
+      <div className="flex items-center mb-3 space-x-2">
         <img
-          className="w-10 h-10 rounded-full"
-          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+          className="w-8 h-8 rounded-full"
+          src="/images/profile.jpg"
           alt=""
         />
         <div className="space-y-1 font-medium text-white">
-          <p>{data?.username} </p>
+          {data?.username}
         </div>
       </div>
       <div className="flex items-center mb-1">
@@ -25,7 +25,7 @@ export default function Review({ review }) {
           {title}
         </h3>
       </div>
-      <p className="pb-6 text-gray-400">{body}</p>
+      <p className="pb-8 text-gray-400">{body}</p>
     </article>
   )
 }
