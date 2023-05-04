@@ -25,19 +25,7 @@ export default function Review({ review }) {
           {title}
         </h3>
       </div>
-      <footer className="mb-5 text-sm text-gray-500 dark:text-gray-400">
-        <p>
-          Reviewed in the United Kingdom on{" "}
-          <time dateTime="2017-03-03 19:00">March 3, 2017</time>
-        </p>
-      </footer>
-      <p className="mb-2 text-gray-500 dark:text-gray-400">{body}</p>
-      <a
-        href="#"
-        className="block mb-5 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
-      >
-        Read more
-      </a>
+      <p className="mb-6 text-gray-500 dark:text-gray-400">{body}</p>
     </article>
   )
 }
